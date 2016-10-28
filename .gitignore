@@ -1,0 +1,6 @@
+# All directories
+.sass-cache/
+
+# Only current directory
+#/css/
+

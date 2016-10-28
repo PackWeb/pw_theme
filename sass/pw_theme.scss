@@ -1,0 +1,507 @@
+/**
+ * Custom styles.
+ */
+
+@import "base";
+@import "mixins";
+
+html {
+  font-size: $font-size;
+}
+
+body {
+  @include adjust-font-size($font-size);
+
+  color: $text;
+  font-family: $sans-serif;
+}
+
+a {
+  color: $link;
+  text-decoration: underline;
+
+  @include link-hover {
+    text-decoration: none;
+  }
+}
+
+blockquote {
+  margin: $gap-large 3em;
+
+  &:before {
+    color: scale-lightness($text, 80%);
+    content: open-quote;
+    float: left;
+    font-size: 5em;
+    margin: 0.25em 0 0 -0.6em;
+  }
+
+  &:after {
+    color: scale-lightness($text, 80%);
+    content: close-quote;
+    float: right;
+    font-size: 5em;
+    margin: -0.25em -0.6em 0 0;
+  }
+}
+
+.breadcrumb {
+  padding-bottom: 0;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: $mono;
+}
+
+figure {
+  margin: $gap-large $indent;
+}
+
+h1 {
+  @include adjust-font-size($h1-font-size, 1.2em);
+  margin: 0 0 0.75em;
+}
+
+h2 {
+  @include adjust-font-size($h2-font-size, 1.3em);
+  margin: 0 0 1em;
+}
+
+h3 {
+  @include adjust-font-size($h3-font-size, 1.3em);
+  margin: 0 0 1.3em;
+}
+
+h4 {
+  @include adjust-font-size($h4-font-size, 1.3em);
+  margin: 0 0 1.5em;
+}
+
+h5 {
+  @include adjust-font-size($h5-font-size, 1.3em);
+  margin: 0 0 1.7em;
+}
+
+h6 {
+  @include adjust-font-size($h6-font-size, 1.4em);
+  margin: 0 0 2em;
+}
+
+hr {
+  background: $grey;
+  border: none;
+  height: 0.1em;
+  width: 98%;
+}
+
+.marker {
+  background: scale-lightness($green, 90%);
+  border-radius: 0;
+  color: $green;
+  padding: 0 0.3em;
+}
+
+.more-help-link,
+.more-link {
+  @include adjust-font-size(0.9em);
+}
+
+p {
+  margin: 0 0 $gap;
+}
+
+pre {
+  overflow: visible;
+  white-space: normal;
+}
+
+/*** Comments ***/
+#comments {
+  .indented {
+    margin-left: $indent;
+  }
+}
+
+/*** Forms ***/
+.dropbutton {
+  a {
+    text-decoration: none;
+  }
+}
+
+.filter-wrapper {
+  margin: (-$gap-large - $line-height) 0 $gap-large;
+  padding: 0;
+
+  legend {
+    font-weight: bold;
+    margin-top: $line-height;
+  }
+
+  .fieldset-wrapper {
+    padding: 1em;
+  }
+}
+
+.form-item,
+.form-actions {
+  margin: $gap-large 0;
+}
+
+.form-item {
+  .description {
+    margin-top: 0.2em;
+  }
+}
+
+.form-type-radio,
+.form-type-checkbox {
+  .description {
+    margin-left: 1.6em;
+  }
+}
+
+input,
+textarea,
+select {
+  background: scale-lightness($grey, 95%);
+  border: 0.1em solid $grey-border;
+  border-radius: none;
+  box-shadow: 0 0 3px scale-lightness($grey, 75%) inset;
+  color: scale-lightness($grey, -50%);
+  line-height: $line-height;
+  padding: 0.2em 0.5em;
+
+  &:focus {
+    border-color: scale-lightness($highlight, -50%);
+  }
+
+  &[disabled] {
+    background: $grey-background;
+    color: $grey;
+    cursor: not-allowed !important;
+  }
+}
+
+input {
+  &[type=submit] {
+    @include link-hover {
+      box-shadow: 0 0 3px scale-lightness($grey, 75%);
+    }
+
+    &.file-remove-button {
+      background: scale-lightness($red, 90%);
+      border-color: $red;
+      box-shadow: 0 0 3px scale-lightness($red, 70%) inset;
+      color: $red;
+      margin-left: 1em !important;
+
+      @include link-hover {
+        box-shadow: 0 0 3px scale-lightness($red, 70%);
+      }
+    }
+
+    &.button-primary,
+    &.button-secondary {
+      font-weight: bold;
+      margin-right: 1em;
+      padding: 0.3em 0.6em;
+    }
+  }
+
+  .js &.form-autocomplete {
+    background-position: right 0.5em center;
+    padding-right: 2em;
+  }
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image: image-url('select-arrow.png');
+  background-position: right 0.5em center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  padding-right: 1.625em;
+}
+
+.vertical-tabs {
+  border: 0.1em solid $grey-border;
+  margin: $gap-large 0;
+
+  .vertical-tabs-list {
+    border: none;
+    margin: 0 0 -0.1em -15em;
+
+    .vertical-tab-item {
+      background: $grey-background;
+      border: none;
+      border-bottom: 0.1em solid $grey-border;
+      border-right: 0.1em solid $grey-border;
+
+      &.vertical-tab-selected {
+        background: transparent;
+        border-right-color: transparent;
+        box-shadow: -1px 5px 5px -5px rgba(0, 0, 0, 0.25);
+        position: relative;
+        z-index: 1;
+
+        a.vertical-tab-link {
+          @include link-hover {
+            background: transparent;
+          }
+        }
+      }
+
+      a.vertical-tab-link {
+        color: $link;
+
+        @include link-hover {
+          background: scale-lightness($grey, 80%);
+          outline: none;
+
+          strong {
+            text-decoration: none;
+          }
+        }
+
+        .summary {
+          @include adjust-font-size(0.8em);
+
+          color: $grey;
+        }
+      }
+    }
+  }
+
+  .vertical-tabs-pane {
+    .fieldset-wrapper {
+      padding: $gap $gap-large;
+    }
+  }
+}
+
+/*** Lists ***/
+ul,
+ol,
+.item-list ul,
+.item-list ol {
+  margin: $gap-large 0;
+  padding: 0 0 0 $indent;
+
+  li {
+    margin: 0;
+  }
+}
+
+ul.inline {
+  li {
+    padding: 0 1em 0 0;
+  }
+}
+
+/*** Messages ***/
+.messages {
+  border-radius: 0;
+
+  ul,
+  ol {
+    margin: 0;
+  }
+}
+
+div.status {
+  background-color: scale-lightness($green, 90%);
+  color: $green;
+
+  &:before {
+    background-color: $green;
+  }
+}
+
+div.warning {
+  background-color: scale-lightness($yellow, 70%);
+  color: $grey;
+
+  &:before {
+    background-color: $yellow;
+  }
+}
+
+div.error {
+  background-color: scale-lightness($red, 90%);
+  color: $red;
+
+  &:before {
+    background-color: $red;
+  }
+}
+
+/*** Pager ***/
+.item-list ul.pager {
+  padding: 0;
+
+  li {
+    padding: 0;
+
+    &.pager-ellipsis,
+    &.pager-current {
+      padding: 0.2em 0.6em;
+    }
+
+    a {
+      padding: 0.2em 0.6em;
+      text-decoration: none;
+
+      @include link-hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/*** Progress Bar ***/
+.progress {
+  .bar {
+    border: 0.1em solid $grey-border;
+
+    .filled {
+      background: scale-lightness($grey, 50%);
+    }
+  }
+}
+
+/*** Tables ***/
+table {
+  width: 100%;
+
+  th,
+  td {
+    border: 0.1em solid $grey-border;
+    padding: 0.25em;
+    text-align: left;
+  }
+
+  thead {
+    tr {
+      background: scale-lightness($grey, 80%);
+    }
+  }
+
+  tbody {
+    tr {
+      &,
+      &.odd {
+        background-color: #fff;
+        border: none;
+        padding: 0;
+      }
+
+      &.even {
+        background: scale-lightness($grey, 95%);
+        border: none;
+        padding: 0;
+      }
+
+      &:hover,
+      &.selected,
+      &.drag-previous {
+        background: $highlight;
+      }
+
+      &.drag {
+        background: scale-lightness($highlight, -10%);
+      }
+
+      td {
+        &.active {
+          background: $grey-background;
+        }
+      }
+    }
+  }
+
+  caption {
+    margin-bottom: $gap-small;
+  }
+}
+
+/*** Tabs ***/
+.l-tabs {
+  margin-bottom: $gap-large;
+}
+
+.tabs {
+  @include adjust-font-size(0.9em);
+
+  &.primary {
+    @include clearfix;
+
+    border-bottom: 0.4em solid $grey-background;
+    line-height: 2.2em;
+    margin: 0;
+
+    li {
+      margin: 0;
+
+      a {
+        background: transparent;
+        border-top: 0.2em solid $grey-border;
+        color: $grey;
+        margin: 0 0.3em;
+        padding: 0 1.5em;
+
+        @include link-hover {
+          background: transparent;
+          border-color: $grey-border transparent transparent;
+          color: $link;
+        }
+
+        &.active {
+          background: $grey-background;
+          border: none;
+          border-top: 0.2em solid $grey-border;
+        }
+      }
+    }
+  }
+
+  &.secondary {
+    background: $grey-background;
+    line-height: 1.6em;
+    margin: 0;
+    padding: 0 0 0.4em;
+
+    li {
+      border-right: 0.1em solid $grey-border;
+      display: inline-block;
+      padding: 0;
+
+      &:first-child {
+        a {
+          margin-left: 0.3em;
+        }
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        color: $grey;
+        display: block;
+        margin-right: 0.3em;
+        padding: 0 1em;
+
+        @include link-hover {
+          background: transparent;
+          color: $link;
+        }
+      }
+    }
+  }
+}
+
