@@ -97,6 +97,10 @@ hr {
   width: 98%;
 }
 
+img {
+  vertical-align: bottom;
+}
+
 .marker {
   background: scale-lightness($green, 90%);
   border-radius: 0;
