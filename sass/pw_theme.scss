@@ -60,34 +60,32 @@ figure {
   margin: $gap-large $indent;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: $gap-small 0 $gap;
+}
+
 h1 {
   @include adjust-font-size($h1-font-size, 1.2em);
-  margin: 0 0 0.75em;
 }
 
 h2 {
   @include adjust-font-size($h2-font-size, 1.3em);
-  margin: 0 0 1em;
 }
 
 h3 {
   @include adjust-font-size($h3-font-size, 1.3em);
-  margin: 0 0 1.3em;
 }
 
 h4 {
   @include adjust-font-size($h4-font-size, 1.3em);
-  margin: 0 0 1.5em;
 }
 
 h5 {
   @include adjust-font-size($h5-font-size, 1.3em);
-  margin: 0 0 1.7em;
 }
 
 h6 {
   @include adjust-font-size($h6-font-size, 1.4em);
-  margin: 0 0 2em;
 }
 
 hr {
