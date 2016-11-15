@@ -28,19 +28,24 @@ a {
 blockquote {
   margin: $gap-large 3em;
 
-  &:before {
+  &:before,
+  &:after {
+    @include adjust-font-size(5em, 1em);
+
     color: scale-lightness($text, 80%);
+    cursor: default;
+    font-family: $serif;
+  }
+
+  &:before {
     content: open-quote;
     float: left;
-    font-size: 5em;
     margin: 0.25em 0 0 -0.6em;
   }
 
   &:after {
-    color: scale-lightness($text, 80%);
     content: close-quote;
     float: right;
-    font-size: 5em;
     margin: -0.25em -0.6em 0 0;
   }
 }

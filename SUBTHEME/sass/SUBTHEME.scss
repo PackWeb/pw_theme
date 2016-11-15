@@ -25,12 +25,10 @@ a {
 blockquote {
   margin: $gap-large 3em;
 
-  &:before {
-    color: scale-lightness($text, 80%);
-  }
-
+  &:before,
   &:after {
     color: scale-lightness($text, 80%);
+    font-family: $serif;
   }
 }
 

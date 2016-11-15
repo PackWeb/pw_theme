@@ -6,7 +6,7 @@ require "susy"
 require "breakpoint"
 
 # Production/development environment.
-environment = :development
+environment = :production
 
 # Resource locations.
 css_dir = "css"
