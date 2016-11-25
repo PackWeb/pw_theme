@@ -180,6 +180,7 @@ select {
   box-shadow: 0 0 3px scale-lightness($grey, 75%) inset;
   color: scale-lightness($grey, -50%);
   line-height: $line-height;
+  max-width: 100%;
   padding: 0.2em 0.5em;
 
   &:focus {
