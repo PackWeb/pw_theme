@@ -108,7 +108,7 @@ p {
 input,
 textarea,
 select {
-  background: scale-lightness($grey, 95%);
+  background-color: scale-lightness($grey, 95%);
   border: 0.1em solid $grey-border;
   box-shadow: 0 0 3px scale-lightness($grey, 75%) inset;
   color: scale-lightness($grey, -50%);

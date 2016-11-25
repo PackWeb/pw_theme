@@ -174,7 +174,7 @@ pre {
 input,
 textarea,
 select {
-  background: scale-lightness($grey, 95%);
+  background-color: scale-lightness($grey, 95%);
   border: 0.1em solid $grey-border;
   border-radius: none;
   box-shadow: 0 0 3px scale-lightness($grey, 75%) inset;
