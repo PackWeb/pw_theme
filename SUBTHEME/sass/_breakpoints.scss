@@ -1,0 +1,10 @@
+/**
+ * Breakpoints.
+ */
+
+@include bkpt-set('default feature', 'max-width');
+
+@include breakpoint(1200px) {
+
+}
+
