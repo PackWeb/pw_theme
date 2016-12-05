@@ -25,6 +25,12 @@ a {
   }
 }
 
+abbr {
+  &[title] {
+    cursor: help;
+  }
+}
+
 blockquote {
   margin: $gap-large 3em;
 
