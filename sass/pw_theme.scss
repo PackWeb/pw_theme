@@ -226,6 +226,10 @@ input {
     }
   }
 
+  &[type=search] {
+    box-sizing: border-box;
+  }
+
   .js &.form-autocomplete {
     background-position: right 0.5em center;
     padding-right: 2em;
