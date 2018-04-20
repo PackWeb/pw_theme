@@ -108,6 +108,10 @@ hr {
 
 img {
   vertical-align: bottom;
+
+  &.file-icon {
+    vertical-align: middle;
+  }
 }
 
 .marker {
