@@ -394,6 +394,8 @@ div.error {
 
 /*** Tables ***/
 table {
+  border-collapse: collapse;
+  border-spacing: 0;
   width: 100%;
 
   th,
