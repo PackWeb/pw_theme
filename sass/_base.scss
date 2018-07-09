@@ -40,3 +40,13 @@ $gap: 1em;
 $gap-large: 1.5em;
 $indent: 2em;
 
+// Set global box-sizing to border-box.
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
