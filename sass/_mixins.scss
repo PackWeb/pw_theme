@@ -2,23 +2,15 @@
  * Custom Sass mixins.
  */
 
-// Vertically center an element
-// @see: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
-@mixin vertical-center($position: relative) {
-  position: $position;
-  top: 50%;
-  transform: perspective(1px) translateY(-50%);
-  -ms-transform: perspective(1px) translateY(-50%);
-  -webkit-transform: perspective(1px) translateY(-50%);
-
-  @if $position == absolute {
-    left: 0;
-    right: 0;
-  }
+// Vertically center children of an element.
+@mixin vcenter {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
-// Link: hover, active, focus.
-@mixin link-hover {
+// Hover, active, focus classes.
+@mixin hover {
   &:hover,
   &:active,
   &.active,
@@ -28,7 +20,7 @@
 }
 
 // Change font size while keeping relative line-height.
-@mixin adjust-font-size($size, $new-line-height: $line-height) {
+@mixin fsize($size, $new-line-height: $line-height) {
   font-size: convert-length($size, 'em', $font-size);
   line-height: $new-line-height;
 }

@@ -3,7 +3,6 @@
  */
 
 @import "compass";
-@import "susy";
 @import "breakpoint";
 
 // Fonts & sizes.
@@ -12,7 +11,7 @@ $line-height: 1.5em;
 
 $h1-font-size: 2 * $font-size;
 $h2-font-size: 1.5 * $font-size;
-$h3-font-size: 1.125 * $font-size;
+$h3-font-size: 1.25 * $font-size;
 $h4-font-size: 1 * $font-size;
 $h5-font-size: 0.875 * $font-size;
 $h6-font-size: 0.75 * $font-size;
@@ -22,11 +21,11 @@ $sans-serif: Verdana, Tahoma, Geneva, "DejaVu Sans", sans-serif;
 $mono: "Courier New", Courier, "DejaVu Sans Mono", monospace, sans-serif;
 
 // Colors.
-$text: #000;
-$link: #00f;
-$highlight: #e6f5ff;
+$text: #222;
+$link: #05f;
+$highlight: scale-lightness($link, 90%);
 
-$green: #080;
+$green: #090;
 $yellow: #fc0;
 $red: #c00;
 $grey: #666;
@@ -39,6 +38,9 @@ $gap-small: 0.5em;
 $gap: 1em;
 $gap-large: 1.5em;
 $indent: 2em;
+
+// Use max-width breakpoints by default.
+@include breakpoint-set('default feature', max-width);
 
 // Set global box-sizing to border-box.
 html {

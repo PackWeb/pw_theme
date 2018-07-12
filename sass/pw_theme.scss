@@ -10,33 +10,29 @@ html {
 }
 
 body {
-  @include adjust-font-size($font-size);
+  @include fsize($font-size);
 
   color: $text;
   font-family: $sans-serif;
 }
 
+/*** Miscellaneous ***/
 a {
   color: $link;
   text-decoration: underline;
 
-  @include link-hover {
+  @include hover {
     text-decoration: none;
   }
 }
 
-abbr {
-  &[title] {
-    cursor: help;
-  }
-}
-
 blockquote {
-  margin: $gap-large 3em;
+  display: flex;
+  margin: $gap-large $indent;
 
   &:before,
   &:after {
-    @include adjust-font-size(5em, 1em);
+    @include fsize(5em, 1em);
 
     color: scale-lightness($text, 80%);
     cursor: default;
@@ -45,14 +41,13 @@ blockquote {
 
   &:before {
     content: open-quote;
-    float: left;
-    margin: -0.1em 0 0 -0.6em;
+    margin: -0.1em 0.1em 0 0;
   }
 
   &:after {
+    align-self: flex-end;
     content: close-quote;
-    float: right;
-    margin: -0.7em -0.6em 0 0;
+    margin: 0 0 -0.3em 0.1em;
   }
 }
 
@@ -61,10 +56,16 @@ blockquote {
 }
 
 code,
-kbd,
-pre,
-samp {
+pre {
   font-family: $mono;
+}
+
+.element-focusable {
+  @include element-focusable;
+}
+
+.element-invisible {
+  @include element-invisible;
 }
 
 figure {
@@ -76,33 +77,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include adjust-font-size($h1-font-size, 1.2em);
+  @include fsize($h1-font-size, 1.2em);
 }
 
 h2 {
-  @include adjust-font-size($h2-font-size, 1.3em);
+  @include fsize($h2-font-size, 1.3em);
 }
 
 h3 {
-  @include adjust-font-size($h3-font-size, 1.3em);
+  @include fsize($h3-font-size, 1.3em);
 }
 
 h4 {
-  @include adjust-font-size($h4-font-size, 1.3em);
+  @include fsize($h4-font-size, 1.3em);
 }
 
 h5 {
-  @include adjust-font-size($h5-font-size, 1.3em);
+  @include fsize($h5-font-size, 1.3em);
 }
 
 h6 {
-  @include adjust-font-size($h6-font-size, 1.4em);
+  @include fsize($h6-font-size, 1.4em);
 }
 
 hr {
   background: $grey;
   border: none;
-  height: 0.1em;
+  height: 0.05em;
   width: 98%;
 }
 
@@ -116,14 +117,14 @@ img {
 
 .marker {
   background: scale-lightness($green, 90%);
-  border-radius: 0;
   color: $green;
-  padding: 0 0.3em;
+  display: inline-block;
+  padding: 0 0.5em;
 }
 
 .more-help-link,
 .more-link {
-  @include adjust-font-size(0.9em);
+  @include fsize(0.9em);
 }
 
 p {
@@ -146,6 +147,13 @@ pre {
 .dropbutton {
   a {
     text-decoration: none;
+  }
+
+  .js & {
+    a,
+    li {
+      text-align: left;
+    }
   }
 }
 
@@ -206,7 +214,7 @@ select {
 
 input {
   &[type=submit] {
-    @include link-hover {
+    @include hover {
       box-shadow: 0 0 3px scale-lightness($grey, 75%);
     }
 
@@ -217,7 +225,7 @@ input {
       color: $red;
       margin-left: 1em !important;
 
-      @include link-hover {
+      @include hover {
         box-shadow: 0 0 3px scale-lightness($red, 70%);
       }
     }
@@ -230,33 +238,34 @@ input {
     }
   }
 
-  &[type=search] {
-    box-sizing: border-box;
-  }
-
   .js &.form-autocomplete {
     background-position: right 0.5em center;
     padding-right: 2em;
   }
 }
 
-select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background-image: image-url('select-arrow.png');
-  background-position: right 0.5em center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  padding-right: 1.625em;
-}
-
-.vertical-tabs {
+/*.vertical-tabs {
+  background: #fff;
   border: 0.1em solid $grey-border;
   margin: $gap-large 0;
+  position: relative;
+
+  &:before {
+    background: $grey-background;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 15em;
+    z-index: 0;
+  }
 
   .vertical-tabs-list {
-    border: none;
-    margin: 0 0 -0.1em -15em;
+    border-top: 0.1em solid $grey-border;
+    margin: -0.1em 0 -0.1em -15em;
+    position: relative;
+    z-index: 1;
 
     .vertical-tab-item {
       background: $grey-background;
@@ -272,7 +281,7 @@ select {
         z-index: 1;
 
         a.vertical-tab-link {
-          @include link-hover {
+          @include hover {
             background: transparent;
           }
         }
@@ -281,7 +290,7 @@ select {
       a.vertical-tab-link {
         color: $link;
 
-        @include link-hover {
+        @include hover {
           background: scale-lightness($grey, 80%);
           outline: none;
 
@@ -291,7 +300,7 @@ select {
         }
 
         .summary {
-          @include adjust-font-size(0.8em);
+          @include fsize(0.8em);
 
           color: $grey;
         }
@@ -299,12 +308,14 @@ select {
     }
   }
 
-  .vertical-tabs-pane {
-    .fieldset-wrapper {
-      padding: $gap $gap-large;
+  .vertical-tabs-panes {
+    .vertical-tabs-pane {
+      .fieldset-wrapper {
+        padding: $gap $gap-large;
+      }
     }
   }
-}
+}*/
 
 /*** Lists ***/
 ul,
@@ -378,7 +389,7 @@ div.error {
       padding: 0.2em 0.6em;
       text-decoration: none;
 
-      @include link-hover {
+      @include hover {
         text-decoration: underline;
       }
     }
@@ -459,7 +470,7 @@ table {
 }
 
 .tabs {
-  @include adjust-font-size(0.9em);
+  @include fsize(0.9em);
 
   &.primary {
     @include clearfix;
@@ -479,7 +490,7 @@ table {
         margin: 0 0.3em;
         padding: 0 1.5em;
 
-        @include link-hover {
+        @include hover {
           background: transparent;
           border-color: $grey-border transparent transparent;
           color: $link;
@@ -521,7 +532,7 @@ table {
         margin-right: 0.3em;
         padding: 0 1em;
 
-        @include link-hover {
+        @include hover {
           background: transparent;
           color: $link;
         }
