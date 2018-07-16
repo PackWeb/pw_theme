@@ -2,5 +2,7 @@ name = PackWeb (theme)
 description = A base theme for PackWeb sites.
 backdrop = 1.x
 
+stylesheets[all][] = menu-dropdown.theme.css
+stylesheets[all][] = menu-toggle.theme.css
 stylesheets[all][] = css/pw_theme.css
 

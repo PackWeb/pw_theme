@@ -13,8 +13,9 @@
 @mixin hover {
   &:hover,
   &:active,
+  &:focus,
   &.active,
-  &:focus {
+  &.active-trail {
     @content;
   }
 }

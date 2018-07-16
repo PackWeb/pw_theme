@@ -12,6 +12,7 @@ html {
 body {
   @include fsize($font-size);
 
+  background: #fff;
   color: $text;
   font-family: $sans-serif;
 }
@@ -27,8 +28,12 @@ a {
 }
 
 blockquote {
+  background-color: transparent;
+  border-left: none;
   display: flex;
-  margin: $gap-large $indent;
+  margin: 1.5em 2em;
+  padding: 0;
+  width: auto;
 
   &:before,
   &:after {
@@ -52,11 +57,27 @@ blockquote {
 }
 
 .breadcrumb {
+  @include fsize(0.95em);
+
   padding-bottom: 0;
+
+  li {
+    &:after {
+      background: none;
+      content: normal;
+      display: inline;
+      height: auto;
+      padding: 0;
+      vertical-align: baseline;
+      width: auto;
+    }
+  }
 }
 
 code,
-pre {
+kbd,
+pre,
+samp {
   font-family: $mono;
 }
 
@@ -68,12 +89,8 @@ pre {
   @include element-invisible;
 }
 
-figure {
-  margin: $gap-large $indent;
-}
-
 h1, h2, h3, h4, h5, h6 {
-  margin: $gap 0;
+  margin: 1em 0;
 }
 
 h1 {
@@ -100,13 +117,6 @@ h6 {
   @include fsize($h6-font-size, 1.4em);
 }
 
-hr {
-  background: $grey;
-  border: none;
-  height: 0.05em;
-  width: 98%;
-}
-
 img {
   vertical-align: bottom;
 
@@ -115,11 +125,8 @@ img {
   }
 }
 
-.marker {
-  background: scale-lightness($green, 90%);
-  color: $green;
-  display: inline-block;
-  padding: 0 0.5em;
+.layout {
+  margin: 0;
 }
 
 .more-help-link,
@@ -128,18 +135,46 @@ img {
 }
 
 p {
-  margin: 0 0 $gap;
+  line-height: $line-height;
+  margin: 0 0 1em;
 }
 
-pre {
-  overflow: visible;
-  white-space: normal;
+/*** Blocks ***/
+.block {
+  clear: none;
+  content: normal;
+  display: block;
+  width: auto;
+
+  &.block-system-header {
+    .block-content {
+      display: flex;
+
+      .logo {
+        margin-right: 1em;
+      }
+
+      .name-and-slogan {
+        float: none;
+
+        .site-name {
+          @include fsize($h1-font-size);
+
+          font-weight: bold;
+
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 /*** Comments ***/
 #comments {
   .indented {
-    margin-left: $indent;
+    margin-left: 2em;
   }
 }
 
@@ -148,201 +183,163 @@ pre {
   a {
     text-decoration: none;
   }
+}
 
-  .js & {
-    a,
-    li {
-      text-align: left;
+fieldset {
+  .js &.collapsed {
+    padding: 1.4em 0;
+
+    .fieldset-legend {
+      a:before {
+        top: 0.65em;
+      }
     }
   }
 }
 
 .filter-wrapper {
-  margin: (-$gap-large - $line-height) 0 $gap-large;
-  padding: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin: -1em 0 1em;
 
-  legend {
-    font-weight: bold;
-    margin-top: $line-height;
-  }
-
-  .fieldset-wrapper {
-    padding: 1em;
-  }
-}
-
-.form-item,
-.form-actions {
-  margin: $gap-large 0;
-}
-
-.form-item {
-  .description {
-    margin-top: 0.2em;
+  .fieldset-legend {
+    margin-top: 0.5em;
   }
 }
 
 .form-type-radio,
 .form-type-checkbox {
   .description {
-    margin-left: 1.6em;
+    margin-left: 1.7em !important;
   }
 }
 
-input,
-textarea,
-select {
-  background-color: scale-lightness($grey, 95%);
-  border: 0.1em solid $grey-border;
-  border-radius: none;
-  box-shadow: 0 0 3px scale-lightness($grey, 75%) inset;
-  color: scale-lightness($grey, -50%);
-  line-height: $line-height;
-  max-width: 100%;
-  padding: 0.2em 0.5em;
-
-  &:focus {
-    border-color: scale-lightness($highlight, -50%);
-  }
-
-  &[disabled] {
-    background: $grey-background;
-    color: $grey;
-    cursor: not-allowed !important;
+.resizable-textarea {
+  .grippie {
+    display: none;
   }
 }
 
-input {
-  &[type=submit] {
-    @include hover {
-      box-shadow: 0 0 3px scale-lightness($grey, 75%);
-    }
+/*** Menus ***/
+.block-system-main-menu {
+  ul.menu-dropdown {
+    list-style-type: none;
+    margin: 0;
 
-    &.file-remove-button {
-      background: scale-lightness($red, 90%);
-      border-color: $red;
-      box-shadow: 0 0 3px scale-lightness($red, 70%) inset;
-      color: $red;
-      margin-left: 1em !important;
+    li {
+      float: none;
+      list-style-type: none;
 
-      @include hover {
-        box-shadow: 0 0 3px scale-lightness($red, 70%);
+      a {
+        color: $link;
+        margin-right: 1em;
+        line-height: $line-height;
+        padding: 0.2em 0.5em;
+
+        @include hover {
+          line-height: $line-height;
+          padding-right: 0.5em;
+        }
+
+        &.highlighted {
+          background: transparent;
+        }
+
+        &.has-submenu {
+          padding-right: 1.5em;
+
+          .sub-arrow {
+            border-top-color: $link;
+            border-width: 5px;
+            right: 0.5em;
+          }
+
+          @include hover {
+            .sub-arrow {
+              border-top-color: $link;
+            }
+          }
+        }
       }
-    }
 
-    &.button-primary,
-    &.button-secondary {
-      font-weight: bold;
-      margin-right: 1em;
-      padding: 0.3em 0.6em;
-    }
-  }
+      &.last {
+        a {
+          margin-right: 0;
+        }
+      }
 
-  .js &.form-autocomplete {
-    background-position: right 0.5em center;
-    padding-right: 2em;
-  }
-}
-
-/*.vertical-tabs {
-  background: #fff;
-  border: 0.1em solid $grey-border;
-  margin: $gap-large 0;
-  position: relative;
-
-  &:before {
-    background: $grey-background;
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 15em;
-    z-index: 0;
-  }
-
-  .vertical-tabs-list {
-    border-top: 0.1em solid $grey-border;
-    margin: -0.1em 0 -0.1em -15em;
-    position: relative;
-    z-index: 1;
-
-    .vertical-tab-item {
-      background: $grey-background;
-      border: none;
-      border-bottom: 0.1em solid $grey-border;
-      border-right: 0.1em solid $grey-border;
-
-      &.vertical-tab-selected {
+      ul {
         background: transparent;
-        border-right-color: transparent;
-        box-shadow: -1px 5px 5px -5px rgba(0, 0, 0, 0.25);
-        position: relative;
-        z-index: 1;
+        border: none;
 
-        a.vertical-tab-link {
+        a {
+          margin-right: 0;
+
           @include hover {
             background: transparent;
           }
+
+          &.has-submenu {
+            .sub-arrow {
+              border-left-color: $link;
+              border-top-color: transparent;
+              right: 0.25em;
+            }
+
+            @include hover {
+              .sub-arrow {
+                border-left-color: $link;
+                border-top-color: transparent;
+              }
+            }
+          }
         }
       }
+    }
 
-      a.vertical-tab-link {
-        color: $link;
+    @include breakpoint(700px) {
+      flex-direction: column;
 
-        @include hover {
-          background: scale-lightness($grey, 80%);
-          outline: none;
+      li {
+        a {
+          margin-right: 0;
+          padding: 0.5em;
 
-          strong {
-            text-decoration: none;
+          &.has-submenu {
+            padding-right: 3em;
+
+            .sub-arrow {
+              height: 2.5em;
+              line-height: 2.5em !important;
+              margin-top: -1.25em;
+              right: 0;
+              width: 2.5em;
+            }
           }
         }
 
-        .summary {
-          @include fsize(0.8em);
-
-          color: $grey;
+        ul {
+          a {
+            padding-left: 1em;
+          }
         }
       }
     }
   }
 
-  .vertical-tabs-panes {
-    .vertical-tabs-pane {
-      .fieldset-wrapper {
-        padding: $gap $gap-large;
-      }
-    }
-  }
-}*/
-
-/*** Lists ***/
-ul,
-ol,
-.item-list ul,
-.item-list ol {
-  margin: $gap-large 0;
-  padding: 0 0 0 $indent;
-
-  li {
-    margin: 0;
-  }
-}
-
-ul.inline {
-  li {
-    padding: 0 1em 0 0;
+  .menu-toggle-button {
+    display: block;
+    padding: 0.2em 0;
   }
 }
 
 /*** Messages ***/
-.messages {
-  border-radius: 0;
+div.error {
+  background-color: scale-lightness($red, 90%);
+  color: $red;
 
-  ul,
-  ol {
-    margin: 0;
+  &:before {
+    background-color: $red;
   }
 }
 
@@ -364,180 +361,32 @@ div.warning {
   }
 }
 
-div.error {
-  background-color: scale-lightness($red, 90%);
-  color: $red;
-
-  &:before {
-    background-color: $red;
-  }
-}
-
 /*** Pager ***/
-.item-list ul.pager {
-  padding: 0;
-
-  li {
-    padding: 0;
-
-    &.pager-ellipsis,
-    &.pager-current {
-      padding: 0.2em 0.6em;
-    }
-
-    a {
-      padding: 0.2em 0.6em;
-      text-decoration: none;
-
-      @include hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-/*** Progress Bar ***/
-.progress {
-  .bar {
-    border: 0.1em solid $grey-border;
-
-    .filled {
-      background: scale-lightness($grey, 50%);
-    }
-  }
-}
-
-/*** Tables ***/
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-
-  th,
-  td {
-    border: 0.1em solid $grey-border;
-    padding: 0.25em;
-    text-align: left;
+.item-list .pager {
+  li.pager-current {
+    min-width: 40px;
   }
 
-  thead {
-    tr {
-      background: scale-lightness($grey, 80%);
-    }
-  }
-
-  tbody {
-    tr {
-      &,
-      &.odd {
-        background-color: #fff;
-        border: none;
-        padding: 0;
-      }
-
-      &.even {
-        background: scale-lightness($grey, 95%);
-        border: none;
-        padding: 0;
-      }
-
-      &:hover,
-      &.selected,
-      &.drag-previous {
-        background: $highlight;
-      }
-
-      &.drag {
-        background: scale-lightness($highlight, -10%);
-      }
-
-      td {
-        &.active {
-          background: $grey-background;
-        }
-      }
-    }
-  }
-
-  caption {
-    margin-bottom: $gap-small;
+  a {
+    min-width: 40px;
+    text-decoration: none;
   }
 }
 
 /*** Tabs ***/
-.l-tabs {
-  margin-bottom: $gap-large;
+ul.primary li {
+  border-color: #fff;
 }
 
-.tabs {
-  @include fsize(0.9em);
+ul.primary li.active a,
+ul.primary li.active a.active,
+ul.primary li.active a:active,
+ul.primary li.active a:visited,
+.responsive-tabs-mobile .expand-dropdown-tabs-label {
+  background-color: $grey-background;
+}
 
-  &.primary {
-    @include clearfix;
-
-    border-bottom: 0.4em solid $grey-background;
-    line-height: 2.2em;
-    margin: 0;
-
-    li {
-      float: left;
-      margin: 0;
-
-      a {
-        background: transparent;
-        border-top: 0.2em solid $grey-border;
-        color: $grey;
-        margin: 0 0.3em;
-        padding: 0 1.5em;
-
-        @include hover {
-          background: transparent;
-          border-color: $grey-border transparent transparent;
-          color: $link;
-        }
-
-        &.active {
-          background: $grey-background;
-          border: none;
-          border-top: 0.2em solid $grey-border;
-        }
-      }
-    }
-  }
-
-  &.secondary {
-    background: $grey-background;
-    line-height: 1.6em;
-    margin: 0;
-    padding: 0 0 0.4em;
-
-    li {
-      border-right: 0.1em solid $grey-border;
-      display: inline-block;
-      padding: 0;
-
-      &:first-child {
-        a {
-          margin-left: 0.3em;
-        }
-      }
-
-      &:last-child {
-        border-right: none;
-      }
-
-      a {
-        color: $grey;
-        display: block;
-        margin-right: 0.3em;
-        padding: 0 1em;
-
-        @include hover {
-          background: transparent;
-          color: $link;
-        }
-      }
-    }
-  }
+ul.secondary {
+  background-color: $grey-background;
 }
 
