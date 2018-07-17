@@ -25,6 +25,16 @@ a {
   @include hover {
     text-decoration: none;
   }
+
+  &.button {
+    text-decoration: none;
+
+    @include hover {
+      background-color: $link;
+      border-color: $link;
+      color: #fff;
+    }
+  }
 }
 
 blockquote {
@@ -137,6 +147,13 @@ img {
 p {
   line-height: $line-height;
   margin: 0 0 1em;
+}
+
+.page-title {
+  @include fsize($h1-font-size, 1.2em);
+
+  color: $text;
+  margin: 0 0 0.5em 0;
 }
 
 /*** Blocks ***/

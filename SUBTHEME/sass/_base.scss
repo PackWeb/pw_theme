@@ -3,7 +3,6 @@
  */
 
 @import "compass";
-@import "susy";
 @import "breakpoint";
 
 // Fonts & sizes.
@@ -12,35 +11,26 @@ $line-height: 1.5em;
 
 $h1-font-size: 2 * $font-size;
 $h2-font-size: 1.5 * $font-size;
-$h3-font-size: 1.125 * $font-size;
-$h4-font-size: 1 * $font-size;
-$h5-font-size: 0.875 * $font-size;
-$h6-font-size: 0.75 * $font-size;
+$h3-font-size: 1.25 * $font-size;
+$h4-font-size: 1.125 * $font-size;
+$h5-font-size: 1 * $font-size;
+$h6-font-size: 0.875 * $font-size;
 
 $serif: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-$sans-serif: Verdana, Tahoma, Geneva, "DejaVu Sans", sans-serif;
+$sans-serif: "Open Sans", "DejaVu Sans", sans-serif;
 $mono: "Courier New", Courier, "DejaVu Sans Mono", monospace, sans-serif;
 
 // Colors.
-$text: #000;
-$link: #00f;
-$highlight: #e6f5ff;
+$text: #222;
+$link: #07c;
 
-$green: #080;
+$green: #090;
 $yellow: #fc0;
 $red: #c00;
+
 $grey: #666;
-
 $grey-background: scale-lightness($grey, 90%);
-$grey-border: scale-lightness($grey, 30%);
 
-// Other variables.
-$gap-small: 0.5em;
-$gap: 1em;
-$gap-large: 1.5em;
-$indent: 2em;
-
-// Set global box-sizing to border-box.
-// Uncomment if not using pw_layout layout (which includes it already).
-//@include border-box-sizing(true);
+// Use max-width breakpoints by default.
+@include breakpoint-set('default feature', max-width);
 

@@ -2,7 +2,7 @@
 
 require "breakpoint"
 
-environment = :development
+environment = :production
 relative_assets = true
 firecompass = true
 

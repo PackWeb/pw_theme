@@ -10,21 +10,25 @@ html {
 }
 
 body {
-  @include adjust-font-size($font-size);
+  @include fsize($font-size);
 
   color: $text;
   font-family: $sans-serif;
 }
 
-// -------------------------------------------------------------------------- //
-
+/*** Miscellaneous ***/
 a {
   color: $link;
+
+  &.button {
+    @include hover {
+      background-color: $link;
+      border-color: $link;
+    }
+  }
 }
 
 blockquote {
-  margin: $gap-large 3em;
-
   &:before,
   &:after {
     color: scale-lightness($text, 80%);
@@ -39,151 +43,107 @@ samp {
   font-family: $mono;
 }
 
-figure {
-  margin: $gap-large $indent;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: $gap 0;
-}
-
 h1 {
-  @include adjust-font-size($h1-font-size, 1.2em);
+  @include fsize($h1-font-size, 1.2em);
 }
 
 h2 {
-  @include adjust-font-size($h2-font-size, 1.3em);
+  @include fsize($h2-font-size, 1.3em);
 }
 
 h3 {
-  @include adjust-font-size($h3-font-size, 1.3em);
+  @include fsize($h3-font-size, 1.3em);
 }
 
 h4 {
-  @include adjust-font-size($h4-font-size, 1.3em);
+  @include fsize($h4-font-size, 1.3em);
 }
 
 h5 {
-  @include adjust-font-size($h5-font-size, 1.3em);
+  @include fsize($h5-font-size, 1.3em);
 }
 
 h6 {
-  @include adjust-font-size($h6-font-size, 1.4em);
-}
-
-hr {
-  background: $grey;
-}
-
-.marker {
-  background: scale-lightness($green, 90%);
-  color: $green;
+  @include fsize($h6-font-size, 1.4em);
 }
 
 p {
-  margin: 0 0 $gap;
-}
-
-/*** Comments ***/
-#comments {
-  .indented {
-    margin-left: $indent;
-  }
-}
-
-/*** Forms ***/
-.filter-wrapper {
-  margin: (-$gap-large - $line-height) 0 $gap-large;
-
-  legend {
-    margin-top: $line-height;
-  }
-}
-
-.form-item,
-.form-actions {
-  margin: $gap-large 0;
-}
-
-input,
-textarea,
-select {
-  background-color: scale-lightness($grey, 95%);
-  border: 0.1em solid $grey-border;
-  box-shadow: 0 0 3px scale-lightness($grey, 75%) inset;
-  color: scale-lightness($grey, -50%);
   line-height: $line-height;
-
-  &:focus {
-    border-color: scale-lightness($highlight, -50%);
-  }
-
-  &[disabled] {
-    background: $grey-background;
-    color: $grey;
-  }
 }
 
-input {
-  &[type=submit] {
-    @include link-hover {
-      box-shadow: 0 0 3px scale-lightness($grey, 75%);
-    }
+.page-title {
+  @include fsize($h1-font-size, 1.2em);
 
-    &.file-remove-button {
-      background: scale-lightness($red, 90%);
-      border-color: $red;
-      box-shadow: 0 0 3px scale-lightness($red, 70%) inset;
-      color: $red;
+  color: $text;
+}
 
-      @include link-hover {
-        box-shadow: 0 0 3px scale-lightness($red, 70%);
+/*** Blocks ***/
+.block {
+  &.block-system-header {
+    .block-content {
+      .name-and-slogan {
+        .site-name {
+          @include fsize($h1-font-size);
+        }
       }
     }
   }
 }
 
-.vertical-tabs {
-  border: 0.1em solid $grey-border;
-  margin: $gap-large 0;
-
-  .vertical-tabs-list {
-    .vertical-tab-item {
-      background: $grey-background;
-      border-bottom: 0.1em solid $grey-border;
-      border-right: 0.1em solid $grey-border;
-
-      a.vertical-tab-link {
+/*** Menus ***/
+.block-system-main-menu {
+  ul.menu-dropdown {
+    li {
+      a {
         color: $link;
+        line-height: $line-height;
 
-        @include link-hover {
-          background: scale-lightness($grey, 80%);
+        @include hover {
+          line-height: $line-height;
         }
 
-        .summary {
-          color: $grey;
+        &.has-submenu {
+          .sub-arrow {
+            border-top-color: $link;
+          }
+
+          @include hover {
+            .sub-arrow {
+              border-top-color: $link;
+            }
+          }
+        }
+      }
+
+      ul {
+        a {
+          &.has-submenu {
+            .sub-arrow {
+              border-left-color: $link;
+            }
+
+            @include hover {
+              .sub-arrow {
+                border-left-color: $link;
+              }
+            }
+          }
         }
       }
     }
   }
-
-  .vertical-tabs-pane {
-    .fieldset-wrapper {
-      padding: $gap $gap-large;
-    }
-  }
-}
-
-/*** Lists ***/
-ul,
-ol,
-.item-list ul,
-.item-list ol {
-  margin: $gap-large 0;
-  padding: 0 0 0 $indent;
 }
 
 /*** Messages ***/
+div.error {
+  background-color: scale-lightness($red, 90%);
+  color: $red;
+
+  &:before {
+    background-color: $red;
+  }
+}
+
 div.status {
   background-color: scale-lightness($green, 90%);
   color: $green;
@@ -202,110 +162,17 @@ div.warning {
   }
 }
 
-div.error {
-  background-color: scale-lightness($red, 90%);
-  color: $red;
-
-  &:before {
-    background-color: $red;
-  }
-}
-
-/*** Progress Bar ***/
-.progress {
-  .bar {
-    border: 0.1em solid $grey-border;
-
-    .filled {
-      background: scale-lightness($grey, 50%);
-    }
-  }
-}
-
-/*** Tables ***/
-table {
-  th,
-  td {
-    border: 0.1em solid $grey-border;
-  }
-
-  thead {
-    tr {
-      background: scale-lightness($grey, 80%);
-    }
-  }
-
-  tbody {
-    tr {
-      &.even {
-        background: scale-lightness($grey, 95%);
-      }
-
-      &:hover,
-      &.selected,
-      &.drag-previous {
-        background: $highlight;
-      }
-
-      &.drag {
-        background: scale-lightness($highlight, -10%);
-      }
-
-      td {
-        &.active {
-          background: $grey-background;
-        }
-      }
-    }
-  }
-
-  caption {
-    margin-bottom: $gap-small;
-  }
-}
-
 /*** Tabs ***/
-.l-tabs {
-  margin-bottom: $gap-large;
+ul.primary li.active a,
+ul.primary li.active a.active,
+ul.primary li.active a:active,
+ul.primary li.active a:visited,
+.responsive-tabs-mobile .expand-dropdown-tabs-label {
+  background-color: $grey-background;
 }
 
-.tabs {
-  &.primary {
-    border-bottom: 0.4em solid $grey-background;
-
-    li {
-      a {
-        border-top: 0.2em solid $grey-border;
-        color: $grey;
-
-        @include link-hover {
-          border-color: $grey-border transparent transparent;
-          color: $link;
-        }
-
-        &.active {
-          background: $grey-background;
-          border-top: 0.2em solid $grey-border;
-        }
-      }
-    }
-  }
-
-  &.secondary {
-    background: $grey-background;
-
-    li {
-      border-right: 0.1em solid $grey-border;
-
-      a {
-        color: $grey;
-
-        @include link-hover {
-          color: $link;
-        }
-      }
-    }
-  }
+ul.secondary {
+  background-color: $grey-background;
 }
 
 @import "breakpoints";
