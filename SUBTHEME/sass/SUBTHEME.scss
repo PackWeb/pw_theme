@@ -29,10 +29,10 @@ a {
 }
 
 blockquote {
-  &:before,
-  &:after {
+  font-family: $serif;
+
+  &:before {
     color: scale-lightness($text, 80%);
-    font-family: $serif;
   }
 }
 

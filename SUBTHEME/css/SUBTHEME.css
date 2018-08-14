@@ -31,10 +31,13 @@ a.button:hover, a.button:active, a.button:focus, a.button.active, a.button.activ
   border-color: #07c;
 }
 
-/* line 32, ../sass/SUBTHEME.scss */
-blockquote:before, blockquote:after {
-  color: lightgray;
+/* line 31, ../sass/SUBTHEME.scss */
+blockquote {
   font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+}
+/* line 34, ../sass/SUBTHEME.scss */
+blockquote:before {
+  color: lightgray;
 }
 
 /* line 39, ../sass/SUBTHEME.scss */

@@ -40,29 +40,25 @@ a {
 blockquote {
   background-color: transparent;
   border-left: none;
-  display: flex;
+  font-family: $serif;
+  font-style: italic;
   margin: 1.5em 2em;
-  padding: 0;
+  padding: 0 0 0 3em;
+  position: relative;
   width: auto;
 
-  &:before,
-  &:after {
+  &:before {
     @include fsize(5em, 1em);
 
     color: scale-lightness($text, 80%);
-    cursor: default;
-    font-family: $serif;
-  }
-
-  &:before {
     content: open-quote;
-    margin: -0.1em 0.1em 0 0;
+    font-style: normal;
+    left: 0;
+    position: absolute;
   }
 
-  &:after {
-    align-self: flex-end;
-    content: close-quote;
-    margin: 0 0 -0.3em 0.1em;
+  * {
+    @include fsize(1em);
   }
 }
 
