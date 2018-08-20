@@ -310,7 +310,7 @@ fieldset {
       }
     }
 
-    @include breakpoint(700px) {
+    @include max(700px) {
       flex-direction: column;
 
       li {

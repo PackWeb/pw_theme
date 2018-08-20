@@ -2,9 +2,6 @@
  * Setup variables, etc.
  */
 
-@import "compass";
-@import "breakpoint";
-
 // Fonts & sizes.
 $font-size: 16px;
 $line-height: 1.5em;
@@ -30,7 +27,4 @@ $red: #c00;
 
 $grey: #666;
 $grey-background: scale-lightness($grey, 90%);
-
-// Use max-width breakpoints by default.
-@include breakpoint-set('default feature', max-width);
 
