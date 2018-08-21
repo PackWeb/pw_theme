@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-size: convert-length(16px, "em", 16px);
+  font-size: 1em;
   line-height: 1.5em;
   color: #222;
   font-family: "Open Sans", "DejaVu Sans", sans-serif;
@@ -42,32 +42,32 @@ samp {
 }
 
 h1 {
-  font-size: convert-length(32px, "em", 16px);
+  font-size: 2em;
   line-height: 1.2em;
 }
 
 h2 {
-  font-size: convert-length(24px, "em", 16px);
+  font-size: 1.5em;
   line-height: 1.3em;
 }
 
 h3 {
-  font-size: convert-length(20px, "em", 16px);
+  font-size: 1.25em;
   line-height: 1.3em;
 }
 
 h4 {
-  font-size: convert-length(18px, "em", 16px);
+  font-size: 1.125em;
   line-height: 1.3em;
 }
 
 h5 {
-  font-size: convert-length(16px, "em", 16px);
+  font-size: 1em;
   line-height: 1.3em;
 }
 
 h6 {
-  font-size: convert-length(14px, "em", 16px);
+  font-size: 0.875em;
   line-height: 1.4em;
 }
 
@@ -76,14 +76,14 @@ p {
 }
 
 .page-title {
-  font-size: convert-length(32px, "em", 16px);
+  font-size: 2em;
   line-height: 1.2em;
   color: #222;
 }
 
 /*** Blocks ***/
 .block.block-system-header .block-content .name-and-slogan .site-name {
-  font-size: convert-length(32px, "em", 16px);
+  font-size: 2em;
   line-height: 1.5em;
 }
 

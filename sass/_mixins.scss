@@ -21,7 +21,13 @@
 
 // Change font size while keeping relative line-height.
 @mixin fsize($size, $new-line-height: $line-height) {
-  font-size: convert-length($size, 'em', $font-size);
+  @if unit($size) == 'px' {
+    font-size: $size / $font-size * 1em;
+  }
+  @else {
+    font-size: $size;
+  }
+
   line-height: $new-line-height;
 }
 
