@@ -1,49 +1,6 @@
 /**
- * Custom Sass mixins.
+ * Custom Sass mixins & functions.
  */
-
-// Vertically center children of an element.
-@mixin vcenter {
-  align-items: center;
-  display: flex;
-}
-
-// Hover, active, focus classes.
-@mixin hover {
-  &:hover,
-  &:active,
-  &:focus,
-  &.active,
-  &.active-trail {
-    @content;
-  }
-}
-
-// Change font size while keeping relative line-height.
-@mixin fsize($size, $new-line-height: $line-height) {
-  @if unit($size) == 'px' {
-    font-size: $size / $font-size * 1em;
-  }
-  @else {
-    font-size: $size;
-  }
-
-  line-height: $new-line-height;
-}
-
-// Max-width media query.
-@mixin max($width) {
-  @media screen and (max-width: $width) {
-    @content;
-  }
-}
-
-// Min-width media query.
-@mixin min($width) {
-  @media screen and (min-width: $width) {
-    @content;
-  }
-}
 
 // Make an element visually hidden, but accessible.
 @mixin element-invisible {
@@ -71,5 +28,53 @@
   &:focus {
     @include element-invisible-off;
   }
+}
+
+// Change font size while keeping relative line-height.
+@mixin fsize($size, $new-line-height: $line-height) {
+  @if unit($size) == 'px' {
+    font-size: $size / $font-size * 1em;
+  }
+  @else {
+    font-size: $size;
+  }
+
+  line-height: $new-line-height;
+}
+
+// Hover, active, focus states.
+@mixin hover {
+  &:hover,
+  &:active,
+  &:focus,
+  &.active,
+  &.active-trail {
+    @content;
+  }
+}
+
+// Lighten or darken colours.
+@function lighten($color, $amount) {
+  @return scale-color($color, $lightness: $amount);
+}
+
+// Max-width media query.
+@mixin max($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+// Min-width media query.
+@mixin min($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+// Vertically center children of an element.
+@mixin vcenter {
+  align-items: center;
+  display: flex;
 }
 

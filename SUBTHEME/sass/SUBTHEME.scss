@@ -3,7 +3,6 @@
  */
 
 @import "base";
-@import "mixins";
 
 html {
   font-size: $font-size;
@@ -32,7 +31,7 @@ blockquote {
   font-family: $serif;
 
   &:before {
-    color: scale-lightness($text, 80%);
+    color: lighten($text, 80%);
   }
 }
 
@@ -43,51 +42,12 @@ samp {
   font-family: $mono;
 }
 
-h1 {
-  @include fsize($h1-font-size, 1.2em);
-}
-
-h2 {
-  @include fsize($h2-font-size, 1.3em);
-}
-
-h3 {
-  @include fsize($h3-font-size, 1.3em);
-}
-
-h4 {
-  @include fsize($h4-font-size, 1.3em);
-}
-
-h5 {
-  @include fsize($h5-font-size, 1.3em);
-}
-
-h6 {
-  @include fsize($h6-font-size, 1.4em);
-}
-
 p {
   line-height: $line-height;
 }
 
 .page-title {
-  @include fsize($h1-font-size, 1.2em);
-
   color: $text;
-}
-
-/*** Blocks ***/
-.block {
-  &.block-system-header {
-    .block-content {
-      .name-and-slogan {
-        .site-name {
-          @include fsize($h1-font-size);
-        }
-      }
-    }
-  }
 }
 
 /*** Menus ***/
@@ -136,7 +96,7 @@ p {
 
 /*** Messages ***/
 div.error {
-  background-color: scale-lightness($red, 90%);
+  background-color: lighten($red, 90%);
   color: $red;
 
   &:before {
@@ -145,7 +105,7 @@ div.error {
 }
 
 div.status {
-  background-color: scale-lightness($green, 90%);
+  background-color: lighten($green, 90%);
   color: $green;
 
   &:before {
@@ -154,7 +114,7 @@ div.status {
 }
 
 div.warning {
-  background-color: scale-lightness($yellow, 70%);
+  background-color: lighten($yellow, 70%);
   color: $grey;
 
   &:before {
@@ -168,11 +128,11 @@ ul.primary li.active a.active,
 ul.primary li.active a:active,
 ul.primary li.active a:visited,
 .responsive-tabs-mobile .expand-dropdown-tabs-label {
-  background-color: $grey-background;
+  background-color: lighten($grey, 90%);
 }
 
 ul.secondary {
-  background-color: $grey-background;
+  background-color: lighten($grey, 90%);
 }
 
 @import "media_queries";

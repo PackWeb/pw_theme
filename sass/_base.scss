@@ -1,17 +1,10 @@
 /**
- * Setup variables, etc.
+ * Setup variables & import partials.
  */
 
 // Fonts & sizes.
 $font-size: 16px;
 $line-height: 1.5em;
-
-$h1-font-size: 2 * $font-size;
-$h2-font-size: 1.5 * $font-size;
-$h3-font-size: 1.25 * $font-size;
-$h4-font-size: 1.125 * $font-size;
-$h5-font-size: 1 * $font-size;
-$h6-font-size: 0.875 * $font-size;
 
 $serif: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
 $sans-serif: "Open Sans", "DejaVu Sans", sans-serif;
@@ -20,21 +13,12 @@ $mono: "Courier New", Courier, "DejaVu Sans Mono", monospace, sans-serif;
 // Colors.
 $text: #222;
 $link: #07c;
+$grey: #666;
 
 $green: #090;
 $yellow: #fc0;
 $red: #c00;
 
-$grey: #666;
-$grey-background: scale-lightness($grey, 90%);
-
-// Set global box-sizing to border-box.
-html {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
+// Import other partials.
+@import "mixins";
 

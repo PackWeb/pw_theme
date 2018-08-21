@@ -2,10 +2,10 @@
  * Custom styles.
  */
 /**
- * Setup variables, etc.
+ * Setup variables & import partials.
  */
 /**
- * Custom Sass mixins.
+ * Custom Sass mixins & functions.
  */
 html {
   font-size: 16px;
@@ -31,7 +31,7 @@ blockquote {
   font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
 }
 blockquote:before {
-  color: scale-lightness(#222, 80%);
+  color: lightgray;
 }
 
 code,
@@ -41,50 +41,12 @@ samp {
   font-family: "Courier New", Courier, "DejaVu Sans Mono", monospace, sans-serif;
 }
 
-h1 {
-  font-size: 2em;
-  line-height: 1.2em;
-}
-
-h2 {
-  font-size: 1.5em;
-  line-height: 1.3em;
-}
-
-h3 {
-  font-size: 1.25em;
-  line-height: 1.3em;
-}
-
-h4 {
-  font-size: 1.125em;
-  line-height: 1.3em;
-}
-
-h5 {
-  font-size: 1em;
-  line-height: 1.3em;
-}
-
-h6 {
-  font-size: 0.875em;
-  line-height: 1.4em;
-}
-
 p {
   line-height: 1.5em;
 }
 
 .page-title {
-  font-size: 2em;
-  line-height: 1.2em;
   color: #222;
-}
-
-/*** Blocks ***/
-.block.block-system-header .block-content .name-and-slogan .site-name {
-  font-size: 2em;
-  line-height: 1.5em;
 }
 
 /*** Menus ***/
@@ -110,7 +72,7 @@ p {
 
 /*** Messages ***/
 div.error {
-  background-color: scale-lightness(#c00, 90%);
+  background-color: #ffe0e0;
   color: #c00;
 }
 div.error:before {
@@ -118,7 +80,7 @@ div.error:before {
 }
 
 div.status {
-  background-color: scale-lightness(#090, 90%);
+  background-color: #dbffdb;
   color: #090;
 }
 div.status:before {
@@ -126,7 +88,7 @@ div.status:before {
 }
 
 div.warning {
-  background-color: scale-lightness(#fc0, 70%);
+  background-color: #fff0b3;
   color: #666;
 }
 div.warning:before {
@@ -139,11 +101,11 @@ ul.primary li.active a.active,
 ul.primary li.active a:active,
 ul.primary li.active a:visited,
 .responsive-tabs-mobile .expand-dropdown-tabs-label {
-  background-color: scale-lightness(#666, 90%);
+  background-color: #f0f0f0;
 }
 
 ul.secondary {
-  background-color: scale-lightness(#666, 90%);
+  background-color: #f0f0f0;
 }
 
 /**
