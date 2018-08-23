@@ -30,6 +30,33 @@
   }
 }
 
+// Display a Font Awesome icon.
+@mixin faicon($code, $type: 'Solid') {
+  content: #{'"\\' + $code + '"'};
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+
+  @if $type == 'Brands' {
+    font-family: 'Font Awesome 5 Brands';
+  }
+  @else {
+    font-family: 'Font Awesome 5 Free';
+  }
+
+  @if $type == 'Light' {
+    font-weight: 300;
+  }
+  @else if $type == 'Regular' or $type == 'Brands' {
+    font-weight: 400;
+  }
+  @else {
+    font-weight: 900;
+  }
+}
+
 // Change font size while keeping relative line-height.
 @mixin fsize($size, $new-line-height: $line-height) {
   @if unit($size) == 'px' {
@@ -51,6 +78,11 @@
   &.active-trail {
     @content;
   }
+}
+
+// Easier image URLs.
+@function image($image) {
+  @return url('../images/#{$image}');
 }
 
 // Lighten or darken colours.
