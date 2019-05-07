@@ -102,11 +102,13 @@
 }
 .menu-toggle-state:checked ~ .menu {
   display: flex;
+  flex-wrap: wrap;
 }
 @media (min-width: 701px) {
   /* Always show the menu in desktop view. */
   .menu-toggle-state:not(:checked) ~ .menu {
     display: flex;
+    flex-wrap: wrap;
   }
 }
 
