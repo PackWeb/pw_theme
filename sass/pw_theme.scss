@@ -168,28 +168,28 @@ p {
   content: normal;
   display: block;
   width: auto;
+}
 
-  &.block-system-header {
-    .block-content {
-      display: flex;
+.block-system-header {
+  .block-content {
+    display: flex;
+  }
 
-      .logo {
-        margin-right: 1em;
-      }
+  .logo {
+    margin-right: 1em;
+  }
 
-      .name-and-slogan {
-        float: none;
+  .name-and-slogan {
+    float: none;
+  }
 
-        .site-name {
-          @include fsize(2em);
+  .site-name {
+    @include fsize(2em);
 
-          font-weight: bold;
+    font-weight: bold;
 
-          a {
-            text-decoration: none;
-          }
-        }
-      }
+    a {
+      text-decoration: none;
     }
   }
 }
