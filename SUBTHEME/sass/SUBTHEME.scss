@@ -91,6 +91,35 @@ p {
         }
       }
     }
+
+    @include max(700px) {
+      flex-direction: column;
+
+      li {
+        a {
+          margin-right: 0;
+          padding: 0.5em;
+
+          &.has-submenu {
+            padding-right: 3em;
+
+            .sub-arrow {
+              height: 2.5em;
+              line-height: 2.5em !important;
+              margin-top: -1.25em;
+              right: 0;
+              width: 2.5em;
+            }
+          }
+        }
+
+        ul {
+          a {
+            padding-left: 1em;
+          }
+        }
+      }
+    }
   }
 }
 

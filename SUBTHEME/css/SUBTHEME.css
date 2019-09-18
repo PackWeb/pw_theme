@@ -69,6 +69,28 @@ p {
 .block-system-main-menu ul.menu-dropdown li ul a.has-submenu:hover .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu:active .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu:focus .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu.active .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu.active-trail .sub-arrow {
   border-left-color: #07c;
 }
+@media screen and (max-width: 700px) {
+  .block-system-main-menu ul.menu-dropdown {
+    flex-direction: column;
+  }
+  .block-system-main-menu ul.menu-dropdown li a {
+    margin-right: 0;
+    padding: 0.5em;
+  }
+  .block-system-main-menu ul.menu-dropdown li a.has-submenu {
+    padding-right: 3em;
+  }
+  .block-system-main-menu ul.menu-dropdown li a.has-submenu .sub-arrow {
+    height: 2.5em;
+    line-height: 2.5em !important;
+    margin-top: -1.25em;
+    right: 0;
+    width: 2.5em;
+  }
+  .block-system-main-menu ul.menu-dropdown li ul a {
+    padding-left: 1em;
+  }
+}
 
 /*** Messages ***/
 div.error {
