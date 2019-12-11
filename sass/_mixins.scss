@@ -2,34 +2,6 @@
  * Custom SASS mixins & functions.
  */
 
-// Make an element visually hidden, but accessible.
-@mixin element-invisible {
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute !important;
-  width: 1px;
-}
-
-// Turn off the element-invisible effect.
-@mixin element-invisible-off {
-  clip: auto;
-  height: auto;
-  overflow: auto;
-  position: static !important;
-  width: auto;
-}
-
-// Make an element visually hidden by default, but visible when focused.
-@mixin element-focusable {
-  @include element-invisible;
-
-  &:active,
-  &:focus {
-    @include element-invisible-off;
-  }
-}
-
 // Change font size while keeping relative line-height.
 @mixin fsize($size, $new-line-height: $line-height) {
   @if unit($size) == 'px' {
@@ -53,7 +25,7 @@
   }
 }
 
-// Lighten or darken colours.
+// Lighten or darken colours (use negative $amount to darken).
 @function lighten($color, $amount) {
   @return scale-color($color, $lightness: $amount);
 }

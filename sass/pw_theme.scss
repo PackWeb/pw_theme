@@ -7,8 +7,8 @@
 html {
   box-sizing: border-box;
   font-size: $font-size;
+  line-height: $line-height;
 }
-
 *,
 *:before,
 *:after {
@@ -24,113 +24,73 @@ body {
 }
 
 /*** Miscellaneous ***/
-a {
+a,
+.link {
   color: $link;
-  text-decoration: underline;
-
-  @include hover {
-    text-decoration: none;
-  }
-
-  &.button {
-    text-decoration: none;
-
-    @include hover {
-      background-color: $link;
-      border-color: $link;
-      color: #fff;
-    }
-  }
+  transition-duration: $transition;
 }
 
 blockquote {
-  background-color: transparent;
-  border-left: none;
-  font-family: $serif;
-  font-style: italic;
-  margin: 1.5em 2em;
-  padding: 0 0 0 3em;
-  position: relative;
-  width: auto;
-
-  &:before {
-    @include fsize(5em, 1em);
-
-    color: lighten($text, 80%);
-    content: open-quote;
-    font-style: normal;
-    left: 0;
-    position: absolute;
-  }
-
-  &:after {
-    content: no-close-quote;
-  }
-
-  * {
-    @include fsize(1em);
-  }
+  background-color: lighten($grey, 95%);
+  border-left-color: lighten($grey, 50%);
 }
 
 .breadcrumb {
-  @include fsize(0.95em);
+  @include fsize(0.85em);
 
+  overflow: hidden;
   padding-bottom: 0;
 
-  li {
-    &:after {
-      background: none;
-      content: normal;
-      display: inline;
-      height: auto;
-      padding: 0;
-      vertical-align: baseline;
-      width: auto;
-    }
+  li,
+  li a,
+  li span {
+    float: none;
   }
 }
 
 code,
-kbd,
 pre,
+kbd,
 samp {
+  @include fsize(0.9em);
+
+  background: lighten($grey, 90%);
+  border-radius: 2px;
   font-family: $mono;
+  padding: 0.2em 0.4em;
+}
+pre code {
+  @include fsize(1em);
+
+  display: block;
 }
 
-.element-focusable {
-  @include element-focusable;
-}
-
-.element-invisible {
-  @include element-invisible;
+.comments {
+  .indented {
+    margin-left: 2em;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 1em 0;
 }
-
 h1 {
-  @include fsize(2em, 1.2em);
+  @include fsize(2em, 1.3em);
 }
-
 h2 {
   @include fsize(1.5em, 1.3em);
 }
-
 h3 {
-  @include fsize(1.25em, 1.3em);
+  @include fsize(1.3em, 1.4em);
 }
-
 h4 {
-  @include fsize(1.125em, 1.3em);
+  @include fsize(1.2em, 1.4em);
 }
-
 h5 {
-  @include fsize(1em, 1.3em);
+  @include fsize(1.1em, 1.4em);
 }
-
 h6 {
-  @include fsize(0.875em, 1.4em);
+  @include fsize(1em, 1.4em);
 }
 
 img {
@@ -145,6 +105,11 @@ img {
   margin: 0;
 }
 
+.logo {
+  float: left;
+  margin-right: 1.5em;
+}
+
 .more-help-link,
 .more-link {
   @include fsize(0.9em);
@@ -152,263 +117,264 @@ img {
 
 p {
   line-height: $line-height;
-  margin: 0 0 1em;
 }
 
 .page-title {
   @include fsize(2em, 1.2em);
 
   color: $text;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 0.5em;
 }
 
-/*** Blocks ***/
-.block {
-  clear: none;
-  content: normal;
-  display: block;
-  width: auto;
-}
+.site-name {
+  margin: 0 0 0.1em;
 
-.block-system-header {
-  .block-content {
-    display: flex;
-  }
-
-  .logo {
-    margin-right: 1em;
-  }
-
-  .name-and-slogan {
-    float: none;
-  }
-
-  .site-name {
-    @include fsize(2em);
-
-    font-weight: bold;
-
-    a {
+  a {
+    @include hover {
+      color: $text;
       text-decoration: none;
-    }
+    };
   }
 }
 
-/*** Comments ***/
-#comments {
-  .indented {
-    margin-left: 2em;
-  }
+.site-slogan {
+  color: lighten($text, 25%);
 }
 
 /*** Forms ***/
-.dropbutton {
-  a {
-    text-decoration: none;
-  }
-}
+input.form-submit,
+button.form-submit,
+a.button {
+  transition-duration: $transition;
 
-fieldset {
-  .js &.collapsed {
-    padding: 1.4em 0;
-
-    .fieldset-legend {
-      a:before {
-        top: 0.65em;
-      }
-    }
-  }
-}
-
-.filter-wrapper {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin: -1em 0 1em;
-
-  .fieldset-legend {
-    margin-top: 0.5em;
-  }
-}
-
-.form-type-radio,
-.form-type-checkbox {
-  .description {
-    margin-left: 1.7em !important;
-  }
-}
-
-.resizable-textarea {
-  .grippie {
-    display: none;
+  @include hover {
+    background-color: $link;
+    border-color: $link;
+    color: $link-contrast;
   }
 }
 
 /*** Menus ***/
-.block-system-main-menu {
-  ul.menu-dropdown {
-    list-style-type: none;
-    margin: 0;
+ul.menu-dropdown,
+.js ul.menu-dropdown {
+  list-style: none;
+  margin: 0;
+
+  li {
+    display: block;
+    list-style: none;
+    padding: 0;
+
+    &.expanded {
+      list-style: none;
+    }
+
+    &.has-children > a {
+      padding-right: 1.8em;
+    }
+  }
+
+  a {
+    background: transparent;
+    color: $link;
+    line-height: $line-height;
+    padding: 0.5em 1em;
+
+    span.sub-arrow {
+      border-width: 0.25em;
+      border-top-color: $link;
+      right: 1em;
+    }
+
+    @include hover {
+      background: $link;
+      color: $link-contrast;
+      line-height: $line-height;
+      padding: 0.5em 1em;
+
+      span.sub-arrow {
+        border-top-color: $link-contrast;
+      }
+    }
+  }
+
+  ul {
+    background: lighten($grey, 90%);
+    border-color: lighten($grey, 75%);
 
     li {
-      float: none;
-      list-style-type: none;
+      &.has-children > a {
+        padding-right: 1em;
+      }
+    }
 
-      a {
-        color: $link;
-        margin-right: 1em;
-        line-height: $line-height;
-        padding: 0.2em 0.5em;
-
-        @include hover {
-          line-height: $line-height;
-          padding-right: 0.5em;
-        }
-
-        &.highlighted {
-          background: transparent;
-        }
-
-        &.has-submenu {
-          padding-right: 1.5em;
-
-          .sub-arrow {
-            border-top-color: $link;
-            border-width: 5px;
-            right: 0.5em;
-          }
-
-          @include hover {
-            .sub-arrow {
-              border-top-color: $link;
-            }
-          }
-        }
+    a {
+      span.sub-arrow {
+        border-color: transparent;
+        border-left-color: $link;
+        right: 0.5em;
       }
 
-      &.last {
-        a {
-          margin-right: 0;
+      @include hover {
+        span.sub-arrow {
+          border-color: transparent;
+          border-left-color: $link-contrast;
+        }
+      }
+    }
+  }
+}
+@include max(47.99em) {
+  ul.menu-dropdown,
+  .js ul.menu-dropdown {
+
+    li {
+      &.has-children > a {
+        padding-right: 0.5em;
+      }
+    }
+
+    a {
+      padding: 0.5em;
+
+      span.sub-arrow {
+        right: 3px;
+      }
+
+      @include hover {
+        padding: 0.5em;
+      }
+    }
+
+    ul {
+      background: transparent;
+
+      a {
+        padding-left: 1.5em;
+
+        span.sub-arrow {
+          right: 3px;
+        }
+
+        @include hover {
+          padding-left: 1.5em;
         }
       }
 
       ul {
-        background: transparent;
-        border: none;
-
         a {
-          margin-right: 0;
+          padding-left: 2.5em;
 
           @include hover {
-            background: transparent;
-          }
-
-          &.has-submenu {
-            .sub-arrow {
-              border-left-color: $link;
-              border-top-color: transparent;
-              right: 0.25em;
-            }
-
-            @include hover {
-              .sub-arrow {
-                border-left-color: $link;
-                border-top-color: transparent;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    @include max(700px) {
-      flex-direction: column;
-
-      li {
-        a {
-          margin-right: 0;
-          padding: 0.5em;
-
-          &.has-submenu {
-            padding-right: 3em;
-
-            .sub-arrow {
-              height: 2.5em;
-              line-height: 2.5em !important;
-              margin-top: -1.25em;
-              right: 0;
-              width: 2.5em;
-            }
+            padding-left: 2.5em;
           }
         }
 
         ul {
           a {
-            padding-left: 1em;
+            padding-left: 3.5em;
+
+            @include hover {
+              padding-left: 3.5em;
+            }
           }
         }
       }
     }
   }
-
-  .menu-toggle-button {
-    display: block;
-    padding: 0.2em 0;
-  }
+}
+.menu-toggle-button {
+  padding: 0.5em 0;
 }
 
-/*** Messages ***/
-div.error {
-  background-color: lighten($red, 90%);
-  color: $red;
+.header-menu {
+  ul.links {
+    list-style: none;
 
-  &:before {
-    background-color: $red;
-  }
-}
+    li {
+      padding: 0 0 0.5em 0.5em;
 
-div.status {
-  background-color: lighten($green, 90%);
-  color: $green;
+      a {
+        @include fsize(0.85em);
 
-  &:before {
-    background-color: $green;
-  }
-}
+        background: lighten($grey, 25%);
+        height: auto;
+        overflow: visible;
+        padding: 0.3em 0.5em;
+        width: auto;
 
-div.warning {
-  background-color: lighten($yellow, 70%);
-  color: $grey;
-
-  &:before {
-    background-color: $yellow;
+        @include hover {
+          background: lighten($grey, 40%);
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
 
 /*** Pager ***/
 .item-list .pager {
   li.pager-current {
-    min-width: 40px;
+    min-width: 30px;
   }
 
   a {
-    min-width: 40px;
-    text-decoration: none;
+    min-width: 30px;
   }
 }
 
-/*** Tabs ***/
-ul.primary li {
-  border-color: #fff;
+/*** Regions ***/
+.l-inner {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 10px;
+
+  .l-inner {
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
 }
 
-ul.primary li.active a,
-ul.primary li.active a.active,
-ul.primary li.active a:active,
-ul.primary li.active a:visited,
-.responsive-tabs-mobile .expand-dropdown-tabs-label {
-  background-color: lighten($grey, 90%);
+.l-header {
+  background: lighten($grey, 90%);
+  margin: 0;
+  padding: 0;
+
+  &:before {
+    content: none;
+  }
 }
 
-ul.secondary {
-  background-color: lighten($grey, 90%);
+.l-header-top {
+  margin-bottom: 1.5em;
+  padding-top: 1em;
+}
+
+.l-above {
+  margin-top: 30px;
+}
+
+.l-wrapper {
+  margin: 50px 0;
+
+  & > .l-inner {
+    padding: 0;
+  }
+}
+
+.l-sidebar-left {
+  margin-right: 20px;
+}
+
+.l-sidebar-right {
+  margin-left: 20px;
+}
+
+.l-footer {
+  @include fsize(0.9em);
+
+  background: lighten($grey, 50%);
+  margin: 20px 0 0;
+  padding: 20px 0;
 }

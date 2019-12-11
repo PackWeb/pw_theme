@@ -13,11 +13,11 @@ $mono: "Courier New", Courier, "DejaVu Sans Mono", monospace, sans-serif;
 // Colors.
 $text: #222;
 $link: #07c;
+$link-contrast: #fff; // Text colour when $link used as background colour
 $grey: #666;
 
-$green: #090;
-$yellow: #fc0;
-$red: #c00;
+// Miscellaneous.
+$transition: 0.2s;
 
 // Import other partials.
 @import "mixins";
