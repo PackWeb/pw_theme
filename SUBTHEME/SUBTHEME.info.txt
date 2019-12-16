@@ -2,5 +2,4 @@ name = SUBTHEME
 description = A custom theme for [SITE_NAME]. Sub-theme of PackWeb.
 backdrop = 1.x
 base theme = pw_theme
-
 stylesheets[all][] = css/SUBTHEME.css
