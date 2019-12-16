@@ -1,14 +1,9 @@
 /**
  * Custom styles.
  */
-/**
- * Setup variables & import partials.
- */
-/**
- * Custom Sass mixins & functions.
- */
 html {
   font-size: 16px;
+  line-height: 1.5em;
 }
 
 body {
@@ -19,25 +14,22 @@ body {
 }
 
 /*** Miscellaneous ***/
-a {
+a,
+.link {
   color: #07c;
-}
-a.button:hover, a.button:active, a.button:focus, a.button.active, a.button.active-trail {
-  background-color: #07c;
-  border-color: #07c;
+  transition-duration: 0.2s;
 }
 
 blockquote {
-  font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-}
-blockquote:before {
-  color: lightgray;
+  background-color: #f7f7f7;
+  border-left-color: #b3b3b3;
 }
 
 code,
-kbd,
 pre,
+kbd,
 samp {
+  background: #f0f0f0;
   font-family: "Courier New", Courier, "DejaVu Sans Mono", monospace, sans-serif;
 }
 
@@ -49,85 +41,160 @@ p {
   color: #222;
 }
 
+.site-name a:hover, .site-name a:active, .site-name a:focus, .site-name a.active, .site-name a.active-trail {
+  color: #222;
+}
+
+.site-slogan {
+  color: #595959;
+}
+
+tr.drag {
+  background: #b3dfff;
+}
+
+tr.drag-previous {
+  background: #e0f2ff;
+}
+
+tr:hover,
+tr:hover td.active,
+tr.odd:hover td.active {
+  background: #d1ecff;
+}
+
+/*** Forms ***/
+input.form-submit,
+button.form-submit,
+a.button {
+  transition-duration: 0.2s;
+}
+input.form-submit:hover, input.form-submit:active, input.form-submit:focus, input.form-submit.active, input.form-submit.active-trail,
+button.form-submit:hover,
+button.form-submit:active,
+button.form-submit:focus,
+button.form-submit.active,
+button.form-submit.active-trail,
+a.button:hover,
+a.button:active,
+a.button:focus,
+a.button.active,
+a.button.active-trail {
+  background-color: #07c;
+  color: #fff;
+}
+
+input.button-primary,
+button.button-primary,
+a.button-primary {
+  background-color: #07c;
+  border-color: #07c;
+  color: #fff;
+}
+input.button-primary:hover, input.button-primary:active, input.button-primary:focus, input.button-primary.active, input.button-primary.active-trail,
+button.button-primary:hover,
+button.button-primary:active,
+button.button-primary:focus,
+button.button-primary.active,
+button.button-primary.active-trail,
+a.button-primary:hover,
+a.button-primary:active,
+a.button-primary:focus,
+a.button-primary.active,
+a.button-primary.active-trail {
+  background-color: #005999;
+  border-color: #005999;
+}
+
+input.button-secondary,
+button.button-secondary,
+a.button-secondary {
+  color: #8c8c8c;
+}
+input.button-secondary:hover, input.button-secondary:active, input.button-secondary:focus, input.button-secondary.active, input.button-secondary.active-trail,
+button.button-secondary:hover,
+button.button-secondary:active,
+button.button-secondary:focus,
+button.button-secondary.active,
+button.button-secondary.active-trail,
+a.button-secondary:hover,
+a.button-secondary:active,
+a.button-secondary:focus,
+a.button-secondary.active,
+a.button-secondary.active-trail {
+  background-color: #07c;
+  color: #fff;
+}
+
+.vertical-tab-selected .vertical-tab-link {
+  border-left-color: #07c;
+}
+
+.vertical-tab-link strong,
+.vertical-tab-link .fieldset-legend {
+  color: #07c;
+}
+
 /*** Menus ***/
-.block-system-main-menu ul.menu-dropdown li a {
+ul.menu-dropdown a,
+.js ul.menu-dropdown a {
   color: #07c;
   line-height: 1.5em;
 }
-.block-system-main-menu ul.menu-dropdown li a:hover, .block-system-main-menu ul.menu-dropdown li a:active, .block-system-main-menu ul.menu-dropdown li a:focus, .block-system-main-menu ul.menu-dropdown li a.active, .block-system-main-menu ul.menu-dropdown li a.active-trail {
+ul.menu-dropdown a span.sub-arrow,
+.js ul.menu-dropdown a span.sub-arrow {
+  border-top-color: #07c;
+}
+ul.menu-dropdown a:hover, ul.menu-dropdown a:active, ul.menu-dropdown a:focus, ul.menu-dropdown a.active, ul.menu-dropdown a.active-trail,
+.js ul.menu-dropdown a:hover,
+.js ul.menu-dropdown a:active,
+.js ul.menu-dropdown a:focus,
+.js ul.menu-dropdown a.active,
+.js ul.menu-dropdown a.active-trail {
+  background: #07c;
+  color: #fff;
   line-height: 1.5em;
 }
-.block-system-main-menu ul.menu-dropdown li a.has-submenu .sub-arrow {
-  border-top-color: #07c;
+ul.menu-dropdown a:hover span.sub-arrow, ul.menu-dropdown a:active span.sub-arrow, ul.menu-dropdown a:focus span.sub-arrow, ul.menu-dropdown a.active span.sub-arrow, ul.menu-dropdown a.active-trail span.sub-arrow,
+.js ul.menu-dropdown a:hover span.sub-arrow,
+.js ul.menu-dropdown a:active span.sub-arrow,
+.js ul.menu-dropdown a:focus span.sub-arrow,
+.js ul.menu-dropdown a.active span.sub-arrow,
+.js ul.menu-dropdown a.active-trail span.sub-arrow {
+  border-top-color: #fff;
 }
-.block-system-main-menu ul.menu-dropdown li a.has-submenu:hover .sub-arrow, .block-system-main-menu ul.menu-dropdown li a.has-submenu:active .sub-arrow, .block-system-main-menu ul.menu-dropdown li a.has-submenu:focus .sub-arrow, .block-system-main-menu ul.menu-dropdown li a.has-submenu.active .sub-arrow, .block-system-main-menu ul.menu-dropdown li a.has-submenu.active-trail .sub-arrow {
-  border-top-color: #07c;
+ul.menu-dropdown ul,
+.js ul.menu-dropdown ul {
+  background: #f0f0f0;
+  border-color: #d9d9d9;
 }
-.block-system-main-menu ul.menu-dropdown li ul a.has-submenu .sub-arrow {
+ul.menu-dropdown ul a span.sub-arrow,
+.js ul.menu-dropdown ul a span.sub-arrow {
   border-left-color: #07c;
 }
-.block-system-main-menu ul.menu-dropdown li ul a.has-submenu:hover .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu:active .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu:focus .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu.active .sub-arrow, .block-system-main-menu ul.menu-dropdown li ul a.has-submenu.active-trail .sub-arrow {
-  border-left-color: #07c;
-}
-@media screen and (max-width: 700px) {
-  .block-system-main-menu ul.menu-dropdown {
-    flex-direction: column;
-  }
-  .block-system-main-menu ul.menu-dropdown li a {
-    margin-right: 0;
-    padding: 0.5em;
-  }
-  .block-system-main-menu ul.menu-dropdown li a.has-submenu {
-    padding-right: 3em;
-  }
-  .block-system-main-menu ul.menu-dropdown li a.has-submenu .sub-arrow {
-    height: 2.5em;
-    line-height: 2.5em !important;
-    margin-top: -1.25em;
-    right: 0;
-    width: 2.5em;
-  }
-  .block-system-main-menu ul.menu-dropdown li ul a {
-    padding-left: 1em;
-  }
+ul.menu-dropdown ul a:hover span.sub-arrow, ul.menu-dropdown ul a:active span.sub-arrow, ul.menu-dropdown ul a:focus span.sub-arrow, ul.menu-dropdown ul a.active span.sub-arrow, ul.menu-dropdown ul a.active-trail span.sub-arrow,
+.js ul.menu-dropdown ul a:hover span.sub-arrow,
+.js ul.menu-dropdown ul a:active span.sub-arrow,
+.js ul.menu-dropdown ul a:focus span.sub-arrow,
+.js ul.menu-dropdown ul a.active span.sub-arrow,
+.js ul.menu-dropdown ul a.active-trail span.sub-arrow {
+  border-left-color: #fff;
 }
 
-/*** Messages ***/
-div.error {
-  background-color: #ffe0e0;
-  color: #c00;
+.header-menu ul.links li a {
+  background: #8c8c8c;
 }
-div.error:before {
-  background-color: #c00;
+.header-menu ul.links li a:hover, .header-menu ul.links li a:active, .header-menu ul.links li a:focus, .header-menu ul.links li a.active, .header-menu ul.links li a.active-trail {
+  background: #a3a3a3;
 }
 
-div.status {
-  background-color: #dbffdb;
-  color: #090;
-}
-div.status:before {
-  background-color: #090;
+/*** Regions ***/
+.l-header {
+  background: #f0f0f0;
 }
 
-div.warning {
-  background-color: #fff0b3;
-  color: #666;
-}
-div.warning:before {
-  background-color: #fc0;
-}
-
-/*** Tabs ***/
-ul.primary li.active a,
-ul.primary li.active a.active,
-ul.primary li.active a:active,
-ul.primary li.active a:visited,
-.responsive-tabs-mobile .expand-dropdown-tabs-label {
-  background-color: #f0f0f0;
-}
-
-ul.secondary {
-  background-color: #f0f0f0;
+.l-footer {
+  background: #b3b3b3;
 }
 
 /**

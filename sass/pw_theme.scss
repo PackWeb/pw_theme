@@ -133,12 +133,24 @@ p {
     @include hover {
       color: $text;
       text-decoration: none;
-    };
+    }
   }
 }
 
 .site-slogan {
   color: lighten($text, 25%);
+}
+
+tr.drag {
+  background: lighten($link, 75%);
+}
+tr.drag-previous {
+  background: lighten($link, 90%);
+}
+tr:hover,
+tr:hover td.active,
+tr.odd:hover td.active {
+  background: lighten($link, 85%);
 }
 
 /*** Forms ***/
@@ -149,9 +161,50 @@ a.button {
 
   @include hover {
     background-color: $link;
-    border-color: $link;
     color: $link-contrast;
   }
+}
+input.button-primary,
+button.button-primary,
+a.button-primary {
+  background-color: $link;
+  border-color: $link;
+  color: $link-contrast;
+
+  @include hover {
+    background-color: lighten($link, -25%);
+    border-color: lighten($link, -25%);
+  }
+}
+input.button-secondary,
+button.button-secondary,
+a.button-secondary {
+  color: lighten($grey, 25%);
+
+  @include hover {
+    background-color: $link;
+    color: $link-contrast;
+  }
+}
+input.button-danger,
+button.button-danger,
+a.button-danger {
+  background-color: #fff;
+  border-color: #e7251b;
+  color: #e7251b;
+
+  @include hover {
+    background-color: #e7251b;
+    border-color: #e7251b;
+  }
+}
+
+.vertical-tab-selected .vertical-tab-link {
+  border-left-color: $link;
+}
+.vertical-tab-link strong,
+.vertical-tab-link .fieldset-legend {
+  color: $link;
 }
 
 /*** Menus ***/

@@ -6,6 +6,7 @@
 
 html {
   font-size: $font-size;
+  line-height: $line-height;
 }
 
 body {
@@ -16,29 +17,22 @@ body {
 }
 
 /*** Miscellaneous ***/
-a {
+a,
+.link {
   color: $link;
-
-  &.button {
-    @include hover {
-      background-color: $link;
-      border-color: $link;
-    }
-  }
+  transition-duration: $transition;
 }
 
 blockquote {
-  font-family: $serif;
-
-  &:before {
-    color: lighten($text, 80%);
-  }
+  background-color: lighten($grey, 95%);
+  border-left-color: lighten($grey, 50%);
 }
 
 code,
-kbd,
 pre,
+kbd,
 samp {
+  background: lighten($grey, 90%);
   font-family: $mono;
 }
 
@@ -50,118 +44,133 @@ p {
   color: $text;
 }
 
+.site-name {
+  a {
+    @include hover {
+      color: $text;
+    }
+  }
+}
+
+.site-slogan {
+  color: lighten($text, 25%);
+}
+
+tr.drag {
+  background: lighten($link, 75%);
+}
+tr.drag-previous {
+  background: lighten($link, 90%);
+}
+tr:hover,
+tr:hover td.active,
+tr.odd:hover td.active {
+  background: lighten($link, 85%);
+}
+
+/*** Forms ***/
+input.form-submit,
+button.form-submit,
+a.button {
+  transition-duration: $transition;
+
+  @include hover {
+    background-color: $link;
+    color: $link-contrast;
+  }
+}
+input.button-primary,
+button.button-primary,
+a.button-primary {
+  background-color: $link;
+  border-color: $link;
+  color: $link-contrast;
+
+  @include hover {
+    background-color: lighten($link, -25%);
+    border-color: lighten($link, -25%);
+  }
+}
+input.button-secondary,
+button.button-secondary,
+a.button-secondary {
+  color: lighten($grey, 25%);
+
+  @include hover {
+    background-color: $link;
+    color: $link-contrast;
+  }
+}
+
+.vertical-tab-selected .vertical-tab-link {
+  border-left-color: $link;
+}
+.vertical-tab-link strong,
+.vertical-tab-link .fieldset-legend {
+  color: $link;
+}
+
 /*** Menus ***/
-.block-system-main-menu {
-  ul.menu-dropdown {
+ul.menu-dropdown,
+.js ul.menu-dropdown {
+  a {
+    color: $link;
+    line-height: $line-height;
+
+    span.sub-arrow {
+      border-top-color: $link;
+    }
+
+    @include hover {
+      background: $link;
+      color: $link-contrast;
+      line-height: $line-height;
+
+      span.sub-arrow {
+        border-top-color: $link-contrast;
+      }
+    }
+  }
+
+  ul {
+    background: lighten($grey, 90%);
+    border-color: lighten($grey, 75%);
+
+    a {
+      span.sub-arrow {
+        border-left-color: $link;
+      }
+
+      @include hover {
+        span.sub-arrow {
+          border-left-color: $link-contrast;
+        }
+      }
+    }
+  }
+}
+
+.header-menu {
+  ul.links {
     li {
       a {
-        color: $link;
-        line-height: $line-height;
+        background: lighten($grey, 25%);
 
         @include hover {
-          line-height: $line-height;
-        }
-
-        &.has-submenu {
-          .sub-arrow {
-            border-top-color: $link;
-          }
-
-          @include hover {
-            .sub-arrow {
-              border-top-color: $link;
-            }
-          }
-        }
-      }
-
-      ul {
-        a {
-          &.has-submenu {
-            .sub-arrow {
-              border-left-color: $link;
-            }
-
-            @include hover {
-              .sub-arrow {
-                border-left-color: $link;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    @include max(700px) {
-      flex-direction: column;
-
-      li {
-        a {
-          margin-right: 0;
-          padding: 0.5em;
-
-          &.has-submenu {
-            padding-right: 3em;
-
-            .sub-arrow {
-              height: 2.5em;
-              line-height: 2.5em !important;
-              margin-top: -1.25em;
-              right: 0;
-              width: 2.5em;
-            }
-          }
-        }
-
-        ul {
-          a {
-            padding-left: 1em;
-          }
+          background: lighten($grey, 40%);
         }
       }
     }
   }
 }
 
-/*** Messages ***/
-div.error {
-  background-color: lighten($red, 90%);
-  color: $red;
-
-  &:before {
-    background-color: $red;
-  }
+/*** Regions ***/
+.l-header {
+  background: lighten($grey, 90%);
 }
 
-div.status {
-  background-color: lighten($green, 90%);
-  color: $green;
-
-  &:before {
-    background-color: $green;
-  }
-}
-
-div.warning {
-  background-color: lighten($yellow, 70%);
-  color: $grey;
-
-  &:before {
-    background-color: $yellow;
-  }
-}
-
-/*** Tabs ***/
-ul.primary li.active a,
-ul.primary li.active a.active,
-ul.primary li.active a:active,
-ul.primary li.active a:visited,
-.responsive-tabs-mobile .expand-dropdown-tabs-label {
-  background-color: lighten($grey, 90%);
-}
-
-ul.secondary {
-  background-color: lighten($grey, 90%);
+.l-footer {
+  background: lighten($grey, 50%);
 }
 
 @import "media_queries";
