@@ -153,6 +153,11 @@ tr.odd:hover td.active {
   background: lighten($link, 85%);
 }
 
+ul.inline,
+ul.links.inline {
+  margin-left: 0;
+}
+
 /*** Forms ***/
 input.form-submit,
 button.form-submit,
