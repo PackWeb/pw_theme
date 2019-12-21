@@ -135,6 +135,18 @@ a.button-secondary.active-trail {
   color: #07c;
 }
 
+input.form-text:focus,
+input.form-tel:focus,
+input.form-email:focus,
+input.form-url:focus,
+input.form-color:focus,
+input.form-number:focus,
+input.form-search:focus,
+input.form-file:focus,
+textarea.form-textarea:focus {
+  border-color: #07c;
+}
+
 /*** Menus ***/
 ul.menu-dropdown a,
 .js ul.menu-dropdown a {

@@ -110,6 +110,18 @@ a.button-secondary {
   color: $link;
 }
 
+input.form-text:focus,
+input.form-tel:focus,
+input.form-email:focus,
+input.form-url:focus,
+input.form-color:focus,
+input.form-number:focus,
+input.form-search:focus,
+input.form-file:focus,
+textarea.form-textarea:focus {
+  border-color: $link;
+}
+
 /*** Menus ***/
 ul.menu-dropdown,
 .js ul.menu-dropdown {
