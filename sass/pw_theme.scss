@@ -157,6 +157,9 @@ ul.inline,
 ul.links.inline {
   margin-left: 0;
 }
+ul.primary li:last-of-type {
+  border-right: none;
+}
 
 /*** Forms ***/
 input.form-submit,
