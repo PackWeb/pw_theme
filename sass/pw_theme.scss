@@ -387,8 +387,12 @@ ul.menu-dropdown,
 
 /*** Pager ***/
 .item-list .pager {
-  li.pager-current {
-    min-width: 30px;
+  li {
+    margin-bottom: 5px;
+
+    &.pager-current {
+      min-width: 30px;
+    }
   }
 
   a {
